@@ -10,11 +10,21 @@ import { HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackendService } from './backend.service';
+import { VotingFormComponent } from './votes/voting-form/voting-form.component';
+import { VotingResultsComponent } from './votes/voting-results/voting-results.component';
+import { VotingPetComponent } from './votes/voting-pet/voting-pet.component';
+import { VotingColorComponent } from './votes/voting-color/voting-color.component';
+import { VotingRowComponent } from './votes/voting-row/voting-row.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VotingFormComponent,
+    VotingResultsComponent,
+    VotingPetComponent,
+    VotingColorComponent,
+    VotingRowComponent
   ],
   imports: [
     BrowserAnimationsModule,
