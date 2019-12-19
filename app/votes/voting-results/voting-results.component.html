@@ -1,9 +1,11 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
   <h1 class="title">Voting App - Results</h1>
-  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="5px">
     <app-voting-pet *ngFor="let pet of pets" [petname]='pet.name' [petresult]='pet.petresult' [percentage]='pet.percentage'></app-voting-pet>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="5px">
     <app-voting-color *ngFor="let color of colors" [colorname]='color.name' [colorresult]='color.colorresult' [percentage]='color.percentage'></app-voting-color>
-  </div>  
+  </div>
+  <h1 class="title">Votes Detail</h1>
+  <app-voting-row></app-voting-row>
 </div>

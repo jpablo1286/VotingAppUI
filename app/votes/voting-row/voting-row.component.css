@@ -1,0 +1,25 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+th {
+  text-align: center;
+}
+tr {
+  text-align: center;
+}
+td {
+  text-align: center;
+  min-width: 100px;
+}
+.imgItem{
+  margin-top: 8px;
+  height: 40px;
+}
