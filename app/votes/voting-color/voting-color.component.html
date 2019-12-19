@@ -1,1 +1,9 @@
-<p>voting-color works!</p>
+<mat-card class="form-container">
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <img class="imgItem" src='../assets/img/{{colorname}}.png' >
+    <mat-chip-list aria-label="Results">
+      <mat-chip color="primary" selected>Votes: {{colorresult}}</mat-chip>
+      <mat-chip color="accent" selected>Percentage: {{percentage}}%</mat-chip>
+    </mat-chip-list>
+  </div>
+</mat-card>

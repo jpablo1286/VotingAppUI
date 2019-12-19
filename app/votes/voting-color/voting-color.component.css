@@ -1,0 +1,21 @@
+.form-container{
+  width: 300px;
+  margin-top: 50px;
+}
+.f-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.f-container > * {
+  width: 100%;
+}
+
+.imgItem{
+  margin-top: 8px;
+  height: 100px;
+}
+.title{
+  margin:auto;
+  width: 100%;
+}

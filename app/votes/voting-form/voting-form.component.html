@@ -12,11 +12,11 @@
   <mat-card class="form-container">
     <div class="f-container">
       <mat-form-field>
-        <input matInput placeholder="Name">
+        <input matInput placeholder="Name" required ngModel #nameInput="ngModel">
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="selectedColor" placeholder="Color">
+        <mat-select [(ngModel)]="selectedColor" placeholder="Color" required>
           <mat-option value="RED">Red</mat-option>
           <mat-option value="BLUE">Blue</mat-option>
           <mat-option value="YELLOW">Yellow</mat-option>
@@ -25,7 +25,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="selectedPet" placeholder="Cats or Dogs">
+        <mat-select [(ngModel)]="selectedPet" placeholder="Cats or Dogs" required>
           <mat-option value="CATS">Cats</mat-option>
           <mat-option value="DOGS">Dogs</mat-option>
         </mat-select>

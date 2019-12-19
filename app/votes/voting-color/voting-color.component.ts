@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output  } from '@angular/core';
 
 @Component({
   selector: 'app-voting-color',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./voting-color.component.css']
 })
 export class VotingColorComponent implements OnInit {
-
+  @Input() colorname: string;
+  @Input() colorresult: number;
+  @Input() percentage: number;
   constructor() { }
 
   ngOnInit() {
