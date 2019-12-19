@@ -1,1 +1,36 @@
-<p>voting-form works!</p>
+<mat-toolbar *ngIf="error" color="warn">{{errorMessage}}</mat-toolbar>
+<mat-toolbar *ngIf="hasMessage" color="accent">{{message}}</mat-toolbar>
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <mat-card class="form-container">
+    <h1>Voting App</h1>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <img class="imgItem" src='../assets/img/{{selectedColor}}.png' >
+      <img class="imgItem" src='../assets/img/{{selectedPet}}.jpg' >
+    </div>
+
+  </mat-card>
+  <mat-card class="form-container">
+    <div class="f-container">
+      <mat-form-field>
+        <input matInput placeholder="Name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedColor" placeholder="Color">
+          <mat-option value="RED">Red</mat-option>
+          <mat-option value="BLUE">Blue</mat-option>
+          <mat-option value="YELLOW">Yellow</mat-option>
+          <mat-option value="GREEN">Green</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedPet" placeholder="Cats or Dogs">
+          <mat-option value="CATS">Cats</mat-option>
+          <mat-option value="DOGS">Dogs</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="authenticate(userInput.value, pwInput.value)">Submit</button>
+    </div>
+  </mat-card>
+</div>

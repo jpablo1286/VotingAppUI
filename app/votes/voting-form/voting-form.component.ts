@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./voting-form.component.css']
 })
 export class VotingFormComponent implements OnInit {
-
+  error=false;
+  errorMessage="";
+  hasMessage=false;
+  message="";
+  selectedColor="QUESTION";
+  selectedPet="QUESTION";
   constructor() { }
 
   ngOnInit() {
