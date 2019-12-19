@@ -1,3 +1,7 @@
+<mat-toolbar *ngIf="error" color="warn">{{errorMessage}}</mat-toolbar>
+<mat-toolbar *ngIf="hasMessage" color="accent">{{message}}</mat-toolbar>
+<div class="loadingDiv" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="!gotResults"> <img class="loadingItem" (load)="getResults()" src="../../assets/img/loading.gif" ></div>
+<div *ngIf="gotResults">
 <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
   <h1 class="title">Voting App - Results</h1>
   <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="5px">
@@ -7,5 +11,6 @@
     <app-voting-color *ngFor="let color of colors" [colorname]='color.name' [colorresult]='color.colorresult' [percentage]='color.percentage'></app-voting-color>
   </div>
   <h1 class="title">Votes Detail</h1>
-  <app-voting-row></app-voting-row>
+  <app-voting-row [votes]="votes"></app-voting-row>
+</div>
 </div>

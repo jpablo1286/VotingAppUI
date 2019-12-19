@@ -7,9 +7,9 @@ import { Subject } from 'rxjs';
 })
 export class BackendService {
 
-  urlBase="http://voting-back:8000/"
+  urlBase="http://votingapp.juanrivera.org:8000/"
 
-  token:"013c20d490866e1c8ea2a3838e75175ee08d3945";
+  token="cb63835c1446ebe99a3bf31073e7b21f02f4fbf6";
   countryCode="";
   httpOptions: any;
   hasMessage=false;
@@ -18,7 +18,11 @@ export class BackendService {
   errorMessage="";
   message="";
   votes: any;
+  colors: any;
+  pets: any;
   votesUpdated = new Subject();
+  petsUpdated = new Subject();
+  colorsUpdated = new Subject();
   errorInfo = new Subject();
   messageService = new Subject();
 
@@ -40,7 +44,7 @@ export class BackendService {
 
       },
       (err) => {
-        this.setError("Error al traer los datos");
+        this.setError("Error retriving data");
         this.retries = this.retries + 1;
         if (this.retries < 4)
         {
@@ -50,8 +54,57 @@ export class BackendService {
     );
   }
 
+  getColors(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+        'Authorization':  'Token '+ this.token
+       })
+    };
+    this.httpClient.get(this.urlBase + 'vote/colors',this.httpOptions).subscribe((res)=>{
+        this.retries = 0;
+        this.colors = res;
+        this.colorsUpdated.next();
+        this.clearErrors();
 
+      },
+      (err) => {
+        this.setError("Error retriving data");
+        this.retries = this.retries + 1;
+        if (this.retries < 4)
+        {
+          this.getVotes();
+        }
+      }
+    );
+  }
+
+  getPets(){
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+        'Authorization':  'Token '+ this.token
+       })
+    };
+    this.httpClient.get(this.urlBase + 'vote/pets',this.httpOptions).subscribe((res)=>{
+        this.retries = 0;
+        this.pets = res;
+        this.petsUpdated.next();
+        this.clearErrors();
+
+      },
+      (err) => {
+        this.setError("Error retriving data");
+        this.retries = this.retries + 1;
+        if (this.retries < 4)
+        {
+          this.getVotes();
+        }
+      }
+    );
+  }
   createVote(name:string, color:string, cats_or_dogs:string){
+    this.setError("Prueba");
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type' : 'application/json',
@@ -60,10 +113,10 @@ export class BackendService {
     };
     this.httpClient.post(this.urlBase + 'vote/create',{name:name, color: color, cats_or_dogs: cats_or_dogs},this.httpOptions).subscribe((res)=>{
         this.clearErrors();
-        this.setMessage("Se subscribio con exito");
+        this.setMessage("Vote sent successfully ");
       },
       (err) => {
-        this.setError("Error al subscribir");
+        this.setError("Vote failed: "+err);
       }
     );
   }
